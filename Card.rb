@@ -1,27 +1,6 @@
-# class Card
-#  # Getter and Setter methods for rank, suit and color
-#  attr_accessor :rank, :suit, :color
-#  # Gets called when you call the new method to create an instance
-#  # card = Card.new('10', 'K', 'Black')
-#  def initialize(rank, suit, color)
-#    @rank = rank
-#    @suit = suit
-#    @color = color
-#  end
-# end
 
 class Card
-<<<<<<< HEAD
- # Getter and Setter methods for rank, suit
- attr_accessor :rank, :suit
- # Gets called when you call the new method to create an instance
- # card = Card.new(10, 'Heart')
- def initialize(rank, suit)
-   @rank = rank
-   @suit = suit
- end
-end
-=======
+
   include Enumerable
     @@suit_value = Hash[ Suits.each_with_index.to_a ]
     @@rank_value = Hash[ Ranks.each_with_index.to_a ]
@@ -67,4 +46,3 @@ end
     end
 
 end
->>>>>>> updatess

@@ -1,5 +1,5 @@
-require_relative 'card'
 require_relative 'deck'
+require_relative 'card'
 
 class Indian_Poker
  # Getter and Setter methods
@@ -11,53 +11,64 @@ class Indian_Poker
 
  	players = []
  		
- 	puts "Let's play Indian Poker!"
+ 	puts "Hi, #{player.name}! Let's play Indian Poker!"
 	num_players = get_num('preferred number of players', 0)
 
-	# create a card for each player
+	# create a deck and shuffle it
+	$d = Deck.new
+	$d.shuffle!
+	puts "A new deck has been shuffled and there are #{$d.remaining} cards"
+
+	# get a card for each player
    	for i in 0..num_players
-   		players[i] = get_card
+   		players[i] = $d.draw
    	end
 
    	# show all other players cards (not casino player)
    	puts "Here are the other players' cards:"
    	for i in 1..num_players
-   		$STDOUT.print "Player #{i}:  "
-   		print_card(players[i])
-   		@STDOUT.flush
+   		puts "Player #{i}:"
+   		puts "  #{print_card(players[i])}"
    	end
 
    	# get bet
-	puts "\n\nHow much do you want to bet?"
-   	bet = get_num('bet', 0)
+  	bet = get_num('bet', 0)
 
 	# number of cards the player beats
    	num_wins = 0 
 
    	# win or lose!
-   	@STDOUT.print "\n\nYour card is:  "
-   	print_card(player[0])
-   	@STDOUT.flush
+   	puts "\n\nYour card is:  "
+   	print_card(players[0])
 
    	for i in 1..num_players
-   		if player[0].card.rank < player[i].card.rank
+   		# check if card number less than others
+   		if players[0].rank.to_i < players[i].rank.to_i
    			num_wins = num_wins - 1
-   		elsif player[0].card.rank = player[i].card.rank
-   			if player[0].card.suit < player[i].card.suit
-   				num_wins = num_wins -1
-   			elsif player[0].card.suit > player[i].card.suit
+   			puts "lost by rank, num_wins is #{num_wins}"
+
+   		# if numbers are the same, check which suit is higher
+   		elsif players[0].rank.to_i == players[i].rank.to_i
+   			if players[0].suit < players[i].suit
+   				num_wins = num_wins - 1
+   			puts "lost by suit, num_wins is #{num_wins}"
+   			elsif players[0].suit > players[i].suit
    				num_wins = num_wins + 1
+   				puts "win by suit, num_wins is #{num_wins}"
    			end
    		else 
+   			# number must be higher
    			num_wins = num_wins + 1
+   			puts "win by rank, num_wins is #{num_wins}"
    		end
    	end
 
-   	puts "Your card beats #{num_wins} of the other other players' cards."
    	if num_wins < 0
+   		puts "Your card beats #{num_players + num_wins} of the other other players' cards."
    		puts "You lose $#{bet * num_wins.abs}"
    		player.wallet.remove_money(num_wins * num_wins.abs)
    	elsif num_wins > 0
+   		puts "Your card beats #{num_wins} of the other other players' cards."
    		puts "You win $#{bet * num_wins}"
    		player.wallet.add_money(bet * num_wins)
    	else
@@ -66,22 +77,19 @@ class Indian_Poker
   end
 end
 
-def get_card
-	card.new(rand(1..13), ['Heart', 'Diamond','Spade', 'Club'].sample)
-end
 
 # an instance of card gets passed to this method
 def print_card(card)
 	case card.rank
-	when 11
-		$STDOUT.print "Jack of #{card.suit}"
-	when 12
-		$STDOUT.print "Queen of #{card.suit}"
-	when 13
-		$STDOUT.print "King of #{card.suit}"
-	when 1
-		$STDOUT.print "Ace of #{card.suit}"
+	when '11'
+		puts "   Jack of #{card.suit}"
+	when '12'
+		puts "   Queen of #{card.suit}"
+	when '13'
+		puts "   King of #{card.suit}"
+	when '1'
+		puts "   Ace of #{card.suit}"
 	else
-		$STDOUT.print "#{card.rank} of #{card.suit}"
+		puts "   #{card.rank} of #{card.suit}"
    	end
 end
