@@ -6,16 +6,14 @@ require_relative 'Player' # these are Ruby filenames
 require_relative 'heads_tails'
 require_relative 'indian_poker'
 
+
 class Casino
-  def initialize # :Player
+  def initialize 
     puts 'Welcome to our Ruby Casino!!!!'
     @player = Player.new
     # need a casino menu using a method
     casino_menu
-    # 
-
-
-
+ 
   end
 
  	def casino_menu
