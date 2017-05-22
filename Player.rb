@@ -1,6 +1,7 @@
 # all gems here
 require 'pry'
 require 'colorize'
+require_relative 'wallet'
 
 class Player
 	attr_accessor :name, :age, :gender, :wallet
@@ -21,6 +22,8 @@ class Player
 		@age = gets.strip.to_i
 		puts "What is your gender, #{@name}?"
 		@gender = gets.strip
+		puts  'How much money are you playing with?'
+		@wallet = Wallet.new(gets.to_f)
 
 		wallet = wallet.new
 	end
