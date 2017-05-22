@@ -1,4 +1,5 @@
 require_relative 'card'
+require_relative 'deck'
 
 class Indian_Poker
  # Getter and Setter methods
