@@ -1,6 +1,7 @@
 # all gems here
 require 'pry'
 require 'colorize'
+
 require_relative 'wallet'
 
 class Player
@@ -25,6 +26,5 @@ class Player
 		puts  'How much money are you playing with?'
 		@wallet = Wallet.new(gets.to_f)
 
-		wallet = wallet.new
 	end
 end
