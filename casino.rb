@@ -2,20 +2,23 @@
 require 'pry'
 require 'colorize'
 
-require_relative 'Player' # these are Ruby filenames
+require_relative 'player' # these are Ruby filenames
 require_relative 'heads_tails'
 require_relative 'indian_poker'
 require_relative "Card"
 require_relative "Deck"
 
-
 class Casino
   def initialize
     puts 'Welcome to our Ruby Casino!!!!'
     @player = Player.new
+
     # need a casino menu using a method
     casino_menu
+<<<<<<< HEAD
 
+=======
+>>>>>>> fix conficts
   end
 
  	def casino_menu
@@ -37,6 +40,8 @@ class Casino
    			Indian_Poker.new(@player)
    		when 2
    			#Heads_Tails.new(@player)
+   		   HeadsTails.new(@player)
+
    		when 3
    			#Roulette.new(@player)
    		when 4

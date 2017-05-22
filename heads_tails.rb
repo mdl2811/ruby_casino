@@ -1,5 +1,7 @@
 require 'pry'
 
+require_relative 'player'
+
 class HeadsTails
 
 	def initialize(player)
@@ -7,18 +9,20 @@ class HeadsTails
 		# puts "#{player.name}, you have a balance of #{player.wallet.amount}"
 		puts 'how much do you want to bet?'
 		  amount = gets.strip.to_i
-    heads_tails = rand(1) == 0 ? 'heads' : 'tails'
-		puts 'Pick (1) for heads and (2) for tails.'
-    check_result
+
+    check_result(player, amount)
 	end
 
-	def check_result
+	def check_result(player, amount)
+		heads_tails = rand(1) == 0 ? 'heads' : 'tails'
+		puts 'Pick (1) for heads and (2) for tails.'
 		user_input = gets.strip.to_i
 		case user_input
 		when 1
 			puts 'heads'
-			if head_tails == 'heads'
+			if heads_tails == 'heads'
 				puts "you win"
+				binding.pry
 				player.wallet.amount += amount * 2
 			else
 				player.wallet.amount -= amount
@@ -37,4 +41,3 @@ class HeadsTails
 	end
 
 end
-
