@@ -3,15 +3,23 @@ require 'pry'
 require 'colorize'
 
 class Wallet
-	attr_accessor :money
+	attr_accessor :amount
 
-	def initialize
+	def initialize(amount)
 		
-		@money = money
+		@amount = amount
+		
+	end
 
-		# set inital values
-		puts 'How much money is in your wallet?'
-		@money = gets.strip.to_f
-		
+	def add_money
+
+	end
+
+	def remove_money
+
+	end
+
+	def query_money
+
 	end
 end
