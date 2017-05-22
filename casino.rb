@@ -5,15 +5,17 @@ require 'colorize'
 require_relative 'Player' # these are Ruby filenames
 require_relative 'heads_tails'
 require_relative 'indian_poker'
+require_relative "Card"
+require_relative "Deck"
 
 
 class Casino
-  def initialize 
+  def initialize
     puts 'Welcome to our Ruby Casino!!!!'
     @player = Player.new
     # need a casino menu using a method
     casino_menu
- 
+
   end
 
  	def casino_menu
@@ -34,7 +36,7 @@ class Casino
    		when 1
    			Indian_Poker.new(@player)
    		when 2
-   			#Heads_Tails.new(@player) 
+   			#Heads_Tails.new(@player)
    		when 3
    			#Roulette.new(@player)
    		when 4
@@ -50,7 +52,7 @@ class Casino
    		# and call it again!
    		casino_menu
 
- 
+
 	end
 
 end

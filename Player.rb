@@ -37,7 +37,7 @@ class Player
 					@gender = nil
 			end
 		end
-			
+
 		@wallet = Wallet.new(0)
 		while (@wallet.amount == nil) or (@wallet.amount <= 0) do
 			puts  'How much money are you playing with?'
