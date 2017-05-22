@@ -8,23 +8,65 @@ class Player
 	attr_accessor :name, :age, :gender, :wallet
 
 	def initialize
-		# ned to think about how to implement the wallet
-		# this could (should) be a class
-		# or just an attribute on the user
 		@name = name
 		@age = age
 		@gender = gender
 		@wallet = wallet
 
 		# set inital values
-		puts 'What is your name?'
-		@name = gets.strip
-		puts "What is your age, #{@name}?"
-		@age = gets.strip.to_i
-		puts "What is your gender, #{@name}?"
-		@gender = gets.strip
-		puts  'How much money are you playing with?'
-		@wallet = Wallet.new(gets.to_f)
+		@name = get_string('name', @name)
+		@age = get_num('age', @age)
 
+		until @gender do
+			puts "Enter the letter for your gender:"
+			puts "(M)ale"
+			puts "(F)emale"
+			puts "(N)o answer"
+			@gender = gets.strip.downcase
+			case @gender
+				when 'm', 'male'
+					@gender = 'male'
+				when 'f', 'female'
+					@gender = 'female'
+				when 'n', 'no answer'
+					@gender = 'no answer'
+				else
+					puts "Please choose one of the following."
+					@gender = nil
+			end
+		end
+			
+		@wallet = Wallet.new(0)
+		while (@wallet.amount == nil) or (@wallet.amount <= 0) do
+			puts  'How much money are you playing with?'
+			@wallet.amount = gets.to_f
+			if (@wallet.amount == 0) || (@wallet.amount == nil)
+				puts "Enter a valid amount of money."
+			end
+		end
 	end
+
+	def get_string(type, var)
+		while (var == nil) || (var == '') do
+			puts "What is your #{type}?"
+			var = gets.strip
+			if var == '' 
+				puts "You must enter a valid #{type}." 
+			end
+		end
+		var
+	end
+
+	def get_num(type, var)
+		while (var == nil) || (var == 0) do
+			puts "What is your #{type}?"
+			var = gets.strip.to_i
+			if var == 0
+				puts "You must enter a valid #{type}." 
+			end
+		end
+		var
+	end
+
+
 end
