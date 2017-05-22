@@ -4,6 +4,8 @@ require 'colorize'
 
 require_relative 'wallet'
 
+require_relative 'methods'
+
 class Player
 	attr_accessor :name, :age, :gender, :wallet
 
@@ -45,28 +47,5 @@ class Player
 			end
 		end
 	end
-
-	def get_string(type, var)
-		while (var == nil) || (var == '') do
-			puts "What is your #{type}?"
-			var = gets.strip
-			if var == '' 
-				puts "You must enter a valid #{type}." 
-			end
-		end
-		var
-	end
-
-	def get_num(type, var)
-		while (var == nil) || (var == 0) do
-			puts "What is your #{type}?"
-			var = gets.strip.to_i
-			if var == 0
-				puts "You must enter a valid #{type}." 
-			end
-		end
-		var
-	end
-
 
 end
