@@ -11,15 +11,16 @@ class Wallet
 		
 	end
 
-	def add_money
+	def add_money(amt)
+		@amount = @amount + amt
 
 	end
 
-	def remove_money
-
+	def remove_money(amt)
+		@amount = @amount - amt
 	end
 
 	def query_money
-
+		puts "You have #{@amount} in your wallet."
 	end
 end
