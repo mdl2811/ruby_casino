@@ -7,6 +7,8 @@ require_relative 'heads_tails'
 require_relative 'indian_poker'
 require_relative "Card"
 require_relative "Deck"
+require_relative "black_jack"
+
 
 class Casino
   def initialize
@@ -15,10 +17,7 @@ class Casino
 
     # need a casino menu using a method
     casino_menu
-<<<<<<< HEAD
 
-=======
->>>>>>> fix conficts
   end
 
  	def casino_menu
@@ -39,15 +38,13 @@ class Casino
    		when 1
    			Indian_Poker.new(@player)
    		when 2
-   			#Heads_Tails.new(@player)
    		   HeadsTails.new(@player)
-
    		when 3
    			#Roulette.new(@player)
    		when 4
    			#Craps.new(@player)
    		when 5
-   			#Black_Jack.new(@player)
+   			BlackJackHand.new
    		when 6
    			exit
    		else
