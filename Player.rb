@@ -1,5 +1,5 @@
 # all gems here
-reqire 'pry'
+require 'pry'
 require 'colorize'
 
 class Player
