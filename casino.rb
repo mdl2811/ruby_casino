@@ -32,7 +32,7 @@ class Casino
    		game = gets.to_i
    		case game
    		when 1
-   			#Indian_Poker.new(@player)
+   			Indian_Poker.new(@player)
    		when 2
    			#Heads_Tails.new(@player) 
    		when 3

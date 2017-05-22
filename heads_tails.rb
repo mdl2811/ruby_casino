@@ -38,4 +38,3 @@ class HeadsTails
 
 end
 
-HeadsTails.new('player')
