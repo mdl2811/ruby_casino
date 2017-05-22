@@ -65,14 +65,14 @@ class Indian_Poker
 
    	if num_wins < 0
    		puts "Your card beats #{num_players + num_wins} of the other other players' cards."
-   		puts "You lose $#{bet * num_wins.abs}"
+   		puts "You lose a total of $#{bet * num_wins.abs}"
    		player.wallet.remove_money(num_wins * num_wins.abs)
    	elsif num_wins > 0
    		puts "Your card beats #{num_wins} of the other other players' cards."
-   		puts "You win $#{bet * num_wins}"
+   		puts "You win a total of $#{bet * num_wins}"
    		player.wallet.add_money(bet * num_wins)
    	else
-   		puts "You didn't win, but you didn't lose either!"
+   		puts "You didn't win money, but you didn't lose money either!"
    	end
   end
 end
