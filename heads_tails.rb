@@ -22,18 +22,20 @@ class HeadsTails
 			puts 'heads'
 			if heads_tails == 'heads'
 				puts "you win"
-				binding.pry
 				player.wallet.amount += amount * 2
 			else
+				heads_tails != 'heads_tails'
+				puts "you lose"
 				player.wallet.amount -= amount
 			end
 		when 2
 			puts 'tails'
-			 if head_tails == 'tails'
+			 if heads_tails == 'tails'
 				 puts "you win"
 				 player.wallet.amount += amount * 2
-			rand(1)
 		   else
+				 heads_tails != 'heads'
+				 puts "you lose"
 				 player.wallet.amount -= amount
 			 end
 		else 'Please pick (1) or (2) for heads and tails.'
