@@ -8,6 +8,7 @@ require_relative 'indian_poker'
 require_relative "Card"
 require_relative "Deck"
 require_relative "black_jack"
+require_relative "methods"
 
 
 class Casino

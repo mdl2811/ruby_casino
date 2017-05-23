@@ -2,6 +2,8 @@
 require 'pry'
 require 'colorize'
 
+require_relative "methods"
+
 class Wallet
 	attr_accessor :amount
 
