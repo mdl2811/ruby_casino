@@ -1,6 +1,7 @@
 #all gems here
 require 'pry'
 require 'colorize'
+require 'sounder'
 
 require_relative 'player' # these are Ruby filenames
 require_relative 'heads_tails'
@@ -19,6 +20,8 @@ class Casino
 
     @player = Player.new
 
+    Sounder::System.set_volume 100 # 0-100
+
     # need a casino menu using a method
     casino_menu
 
@@ -31,6 +34,9 @@ class Casino
    		# bankroll - player status
    		# quit
       print_slots
+      sound = Sounder::Sound.new "./media/69687__lukaso__casino.wav"
+      sound.play
+
    		puts 'Enter the number of the game you want to play:'
    		puts '1) Single Card No-See-Em Poker -- WORKING!!'
    		puts '2) Heads or Tails -- WORKING!!'
