@@ -34,7 +34,7 @@ class Casino
    		# bankroll - player status
    		# quit
       print_slots
-      sound = Sounder::Sound.new "./media/69687__lukaso__casino.wav"
+      sound = Sounder::Sound.new "./69687__lukaso__casino.wav"
       sound.play
 
    		puts 'Enter the number of the game you want to play:'

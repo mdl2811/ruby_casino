@@ -12,13 +12,13 @@ class Deck
   end
   def shuffle!
     puts "Wait just a sec while the deck is shuffled!"
-    sound = Sounder::Sound.new "./media/262812__win88emily__card-shuffle-win88.mp3"
+    sound = Sounder::Sound.new "./262812__win88emily__card-shuffle-win88.mp3"
     sound.play
     sleep(4)
     @cards.shuffle!
   end
   def draw
-    sound = Sounder::Sound.new "./media/240777__f4ngy__dealing-card.wav"
+    sound = Sounder::Sound.new "./240777__f4ngy__dealing-card.wav"
     sound.play
     @cards.pop
   end

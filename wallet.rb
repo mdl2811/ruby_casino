@@ -20,7 +20,7 @@ class Wallet
 
 	def add_money(amt)
 		@amount = @amount + amt
-        sound = Sounder::Sound.new "./media/262812__win88emily__card-shuffle-win88.mp3"
+        sound = Sounder::Sound.new "./262812__win88emily__card-shuffle-win88.mp3"
         sound.play
 
 	end
