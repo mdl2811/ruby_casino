@@ -13,54 +13,59 @@ class BlackJackHand
       @d = Deck.new
       @d.shuffle!
       puts "A new deck has been shuffled and there are #{@d.remaining} cards"
-
-      2.times do
-        card = @d.draw
-        @hand_value == 0 ? @hand_value = card.value.to_i : @hand_value += card.value.to_i
-        @hand << card
-      end
-
       playing
   end
 
-  def playing
-    play = BlackJackHand.new
-    puts "Player's hand:"
-    puts play.to_s
-    deal = BlackJackHand.new
+  def deal
+    2.times do
+      card = @d.draw
+      @hand_value == 0 ? @hand_value = card.value.to_i : @hand_value += card.value.to_i
+      @hand << card
+    end
+    @hand
 
-    if play.hand_value == 21
+  end
+
+  def playing
+    player_cards = deal
+    puts "Player's hand:"
+    puts player_cards.to_s
+    dealer_cards = deal
+    puts "Dealer's Hand:"
+    puts dealer_cards
+
+    if player_cards.hand_value == 21
       puts "Player wins with BlackJack!"
       puts "Dealer's hand:"
-      puts deal.to_s
+      puts dealer_cards.to_s
     else
-      until play.hand_value > 21
+      until player_cards.hand_value > 21
         play.switch_ace
         puts "Do you want to hit(h) or stay(s)?"
         action = $stdin.gets.chomp
         if action == "h"
           puts "You chose to hit, here's your new hand"
           play.hit
-          puts play.to_s
+          puts player_cards.to_s
         else
           puts "You chose to stay, here's your final hand"
-          puts play.to_s
+          puts player_cards.to_s
           break
         end
       end
 
       puts "Dealer's hand:"
-      puts deal.to_s
+      puts dealer_cards.to_s
 
       while deal.hand_value < 17
-        deal.hit
-        puts deal.to_s
+        dealer_cards.hit
+        puts dealer_cards.to_s
       end
 
-      if play.hand_value <= 21
-        if play.hand_value > deal.hand_value
+      if player_cards.hand_value <= 21
+        if player_cards.hand_value > deal.hand_value
           puts "Player wins"
-        elsif play.hand_value == deal.hand_value
+        elsif player_cards.hand_value == dealer_cards.hand_value
           puts "Dealer and Player tied"
         else
           puts "Dealer wins"
