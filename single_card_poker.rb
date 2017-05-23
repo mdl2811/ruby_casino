@@ -16,15 +16,20 @@ class SingleCardPoker
 
    continue = true
    	# create a deck and shuffle it
-   	$d = Deck.new
-   	$d.shuffle!
-   	puts "A new deck has been shuffled and there are #{$d.remaining} cards. \n"
+   	@d = Deck.new
+   	@d.shuffle!
+   	puts "A new deck has been shuffled and there are #{@d.remaining} cards. \n"
 
    while continue
 
    	# get a card for each player
       	for i in 0..num_players
-      		players[i] = $d.draw
+            if @d.remaining < num_players
+               @d = Deck.new
+               @d.shuffle!
+               puts "A new deck has been shuffled and there are #{$d.remaining} cards. \n"
+            end
+      		players[i] = @d.draw
       	end
 
       	# show all other players cards (not casino player)
@@ -70,7 +75,7 @@ class SingleCardPoker
          bank = num_wins - num_losses
          # change wallet by amount won or lost
       	if bank < 0
-      		puts "You lose a total of $#{bet * bank}"
+      		puts "You lose a total of $#{bet * bank.abs}"
       		player.wallet.remove_money(bet * bank.abs)
       	elsif bank > 0
       		puts "You win a total of $#{bet * bank}"

@@ -8,7 +8,7 @@ class Wallet
 	attr_accessor :amount
 
 	def initialize
-		while (@amount == nil) or (@amount <= 0) do
+		while (@amount == nil) || (@amount <= 0) do
 			puts "How much money do you have?"
 			@amount = gets.to_f
 			if (@amount == 0) || (@amount == nil)
@@ -25,9 +25,22 @@ class Wallet
 
 	def remove_money(amt)
 		@amount = @amount - amt
+
+		while (@amount == nil) || (@amount <= 0) do
+			puts "You have #{@amount} in your wallet."
+			puts "How much money do you want to add to your wallet?"
+			add_amt = gets.to_f
+			if (add_amt <= 0) || (add_amt == nil)
+				puts "Enter a valid amount of money."
+			end
+			@amount = @amount + add_amt
+			query_money
+		end
+
 	end
 
 	def query_money
 		puts "You have #{@amount} in your wallet."
+		@amount
 	end
 end
