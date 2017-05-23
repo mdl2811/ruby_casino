@@ -9,11 +9,14 @@ require_relative "Card"
 require_relative "Deck"
 require_relative "black_jack"
 require_relative "methods"
+require_relative "print_slots"
 
 
 class Casino
   def initialize
-    puts 'Welcome to our Ruby Casino!!!!'
+    print_welcome
+    puts "\nWelcome to our Ruby Casino!!!!"
+
     @player = Player.new
 
     # need a casino menu using a method
@@ -27,8 +30,9 @@ class Casino
    		# game options
    		# bankroll - player status
    		# quit
+      print_slots
    		puts 'Enter the number of the game you want to play:'
-   		puts '1) Single Card Poker -- WORKING!!'
+   		puts '1) Single Card No-See-Em Poker -- WORKING!!'
    		puts '2) Heads or Tails--not yet working'
    		puts '3) Roulette--not yet working'
    		puts '4) Craps--not yet working'
