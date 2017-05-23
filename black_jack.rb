@@ -8,60 +8,67 @@ class BlackJackHand
 
   def initialize
       @hand = []
+      @dealer_hand = []
       @hand_value = 0
       @d = []
       @d = Deck.new
       @d.shuffle!
       puts "A new deck has been shuffled and there are #{@d.remaining} cards"
-      playing
+      deal
   end
 
   def deal
     2.times do
       card = @d.draw
-      @hand_value == 0 ? @hand_value = card.value.to_i : @hand_value += card.value.to_i
       @hand << card
+      card.each { card + card }
     end
-
+    2.times do
+      card = @d.draw
+      @dealer_hand << card
+      card.each { card + card }
+    end
+    playing
   end
 
   def playing
-    player_cards = deal
+    @hand
     puts "Player's hand:"
-    puts player_cards.to_s
+    puts @hand
 
-    if player_cards == 21
+    if @hand == 21
       puts "Player wins with BlackJack!"
       puts "Dealer's hand:"
-      puts dealer_cards.to_s
+      puts @dealer_hand
     else
-      until player_cards > 21
+binding.pry
+      until @hand > 21
         puts "Do you want to hit(h) or stay(s)?"
         action = $stdin.gets.chomp
         if action == "h"
           puts "You chose to hit, here's your new hand"
           hit
-          puts player_cards.to_s
+          puts @hand
         else
           puts "You chose to stay, here's your final hand"
-          puts player_cards.to_s
+          puts @hand
           break
         end
       end
 
-      dealer_cards = deal
+      @dealer_hand
       puts "Dealer's hand:"
-      puts dealer_cards.to_s
+      puts @dealer_hand
 
-      while dealer_cards < 17
+      while @dealer_hand < 17
         hit
-        puts dealer_cards.to_s
+        puts @dealer_hand
       end
 
-      if player_cards <= 21
-        if player_cards > dealer_cards
+      if @hand <= 21
+        if @hand > @dealer_hand
           puts "Player wins"
-        elsif player_cards == dealer_cards
+        elsif @hand == @dealer_hand
           puts "Dealer and Player tied"
         else
           puts "Dealer wins"
