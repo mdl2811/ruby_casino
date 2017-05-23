@@ -27,7 +27,7 @@ class SingleCardPoker
             if @d.remaining < num_players
                @d = Deck.new
                @d.shuffle!
-               puts "A new deck has been shuffled and there are #{$d.remaining} cards. \n"
+               puts "A new deck has been shuffled and there are #{@d.remaining} cards. \n"
             end
       		players[i] = @d.draw
       	end

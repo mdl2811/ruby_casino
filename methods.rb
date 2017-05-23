@@ -7,7 +7,7 @@ def get_string(type, var)
 	while (var == nil) || (var == '') do
 		puts "What is your #{type}?"
 		var = gets.strip
-		if var == '' 
+		if (var == '') || (var == nil) 
 			puts "You must enter a valid #{type}." 
 		end
 	end
@@ -22,7 +22,7 @@ def get_num(type, var)
 	while (var == nil) || (var <= 0) do
 		puts "What is your #{type}?"
 		var = gets.strip.to_i
-		if var < 0
+		if (var < 0) || (var == nil) 
 			puts "You must enter a valid #{type}." 
 		end
 	end
