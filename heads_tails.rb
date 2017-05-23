@@ -11,6 +11,7 @@ class HeadsTails
 		  amount = gets.strip.to_i
 
     check_result(player, amount)
+		continue_quit(player)
 	end
 
 	def check_result(player, amount)
@@ -40,7 +41,21 @@ class HeadsTails
 			 end
 		else 'Please pick (1) or (2) for heads and tails.'
 		end
-
 	end
+
+	def continue_quit(player)
+		puts "Would you like to continue?
+		1) yes
+		2) no"
+		continue = gets.strip.to_i
+  case continue
+	when 1
+		puts 'Continue'
+		HeadsTails.new(player)
+	when 2
+		puts 'Bye, come play again.'
+	end
+end
+
 
 end
