@@ -28,7 +28,7 @@ class Casino
    		# bankroll - player status
    		# quit
    		puts 'Enter the number of the game you want to play:'
-   		puts '1) Single Card Poker--not yet working'
+   		puts '1) Single Card Poker -- WORKING!!'
    		puts '2) Heads or Tails--not yet working'
    		puts '3) Roulette--not yet working'
    		puts '4) Craps--not yet working'
