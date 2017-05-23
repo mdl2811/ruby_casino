@@ -1,5 +1,6 @@
 require_relative 'Deck'
 require_relative 'Card'
+require_relative 'card_display'
 
 class SingleCardPoker
  # Getter and Setter methods
@@ -36,7 +37,8 @@ class SingleCardPoker
       	puts "Here are the other players' cards:"
       	for i in 1..num_players
       		puts "Player #{i}:"
-      		puts "  #{print_card(players[i])}"
+      		# puts "  #{print_card(players[i])}"
+            card_display_ascii(players[i])
       	end
 
       	# get bet
@@ -48,7 +50,8 @@ class SingleCardPoker
 
       	# win or lose!
       	puts "\n\nYour card is:  "
-      	print_card(players[0])
+      	# print_card(players[0])
+         card_display_ascii(players[0])
 
       	for i in 1..num_players
       		# check if card rank less than others
