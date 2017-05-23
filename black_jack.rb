@@ -31,9 +31,7 @@ class BlackJackHand
     puts "Player's hand:"
     puts player_cards.to_s
     dealer_cards = deal
-    puts "Dealer's Hand:"
-    puts dealer_cards
-
+binding.pry
     if player_cards.hand_value == 21
       puts "Player wins with BlackJack!"
       puts "Dealer's hand:"
