@@ -1,7 +1,7 @@
 require_relative 'deck'
 require_relative 'card'
 
-class Indian_Poker
+class SingleCardPoker
  # Getter and Setter methods
  # attr_accessor 
 
@@ -11,7 +11,7 @@ class Indian_Poker
 
  	players = []
  		
- 	puts "Hi, #{player.name}! Let's play Indian Poker!"
+ 	puts "Hi, #{player.name}! Let's play Single Card Poker!"
 	num_players = get_num('preferred number of players', 0)
 
 	# create a deck and shuffle it

@@ -4,7 +4,7 @@ require 'colorize'
 
 require_relative 'player' # these are Ruby filenames
 require_relative 'heads_tails'
-require_relative 'indian_poker'
+require_relative 'single_card_poker'
 require_relative "Card"
 require_relative "Deck"
 require_relative "black_jack"
@@ -28,7 +28,7 @@ class Casino
    		# bankroll - player status
    		# quit
    		puts 'Enter the number of the game you want to play:'
-   		puts '1) Indian Poker'
+   		puts '1) Single Card Poker'
    		puts '2) Heads or Tails'
    		puts '3) Roulette'
    		puts '4) Craps'
@@ -37,7 +37,7 @@ class Casino
    		game = gets.to_i
    		case game
    		when 1
-   			Indian_Poker.new(@player)
+   			SingleCardPoker.new(@player)
    		when 2
    		   HeadsTails.new(@player)
    		when 3
