@@ -19,10 +19,10 @@ end
 #     var is the variable itself as a float or integer
 # returns the input as an integer
 def get_num(type, var)
-	while (var == nil) || (var <= 1) do
+	while (var == nil) || (var <= 0) do
 		puts "What is your #{type}?"
 		var = gets.strip.to_i
-		if var == 0
+		if var < 0
 			puts "You must enter a valid #{type}." 
 		end
 	end

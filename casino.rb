@@ -28,16 +28,16 @@ class Casino
    		# bankroll - player status
    		# quit
    		puts 'Enter the number of the game you want to play:'
-   		puts '1) Single Card Poker'
-   		puts '2) Heads or Tails'
-   		puts '3) Roulette'
-   		puts '4) Craps'
-   		puts '5) Black Jack'
+   		puts '1) Single Card Poker--not yet working'
+   		puts '2) Heads or Tails--not yet working'
+   		puts '3) Roulette--not yet working'
+   		puts '4) Craps--not yet working'
+   		puts '5) Black Jack--not yet working'
    		puts '6) Quit'
    		game = gets.to_i
    		case game
    		when 1
-   			SingleCardPoker.new(@player)
+   			 SingleCardPoker.new(@player)
    		when 2
    		   HeadsTails.new(@player)
    		when 3
