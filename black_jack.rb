@@ -4,11 +4,11 @@ require_relative "Card"
 require_relative "Deck"
 
 class BlackJackHand
-  attr_accessor :hand, :hand_value, :ace_count
+  attr_accessor :hand, :hand_value
+
   def initialize
       @hand = []
       @hand_value = 0
-      @ace_count = ace_count
       @d = []
       @d = Deck.new
       @d.shuffle!
@@ -22,7 +22,6 @@ class BlackJackHand
       @hand_value == 0 ? @hand_value = card.value.to_i : @hand_value += card.value.to_i
       @hand << card
     end
-    @hand_value
 
   end
 
@@ -30,7 +29,6 @@ class BlackJackHand
     player_cards = deal
     puts "Player's hand:"
     puts player_cards.to_s
-    dealer_cards = deal
 
     if player_cards == 21
       puts "Player wins with BlackJack!"
@@ -38,7 +36,6 @@ class BlackJackHand
       puts dealer_cards.to_s
     else
       until player_cards > 21
-        switch_ace
         puts "Do you want to hit(h) or stay(s)?"
         action = $stdin.gets.chomp
         if action == "h"
@@ -57,7 +54,7 @@ class BlackJackHand
       puts dealer_cards.to_s
 
       while dealer_cards < 17
-        dealer_cards.hit
+        hit
         puts dealer_cards.to_s
       end
 
@@ -80,14 +77,6 @@ class BlackJackHand
     card = @d.draw
     @hand_value == 0 ? @hand_value = card.value.to_i : @hand_value += card.value.to_i
     @hand << card
-  end
-
-  def switch_ace
-    binding.pry
-    while @hand_value > 21 && @ace_count > 0
-      @ace_count -= 1
-      @hand_value -= 10
-    end
   end
 
   def to_s
