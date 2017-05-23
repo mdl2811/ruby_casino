@@ -1,5 +1,5 @@
-require_relative 'deck'
-require_relative 'card'
+require_relative 'Deck'
+require_relative 'Card'
 
 class SingleCardPoker
  # Getter and Setter methods
