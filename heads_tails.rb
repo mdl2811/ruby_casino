@@ -19,12 +19,11 @@ class HeadsTails
 		user_input = gets.strip.to_i
 		case user_input
 		when 1
-			puts 'heads'
 			if heads_tails == 'heads'
 				puts "you win"
 				player.wallet.amount += amount * 2
 			else
-				heads_tails != 'heads_tails'
+				heads_tails != 'heads'
 				puts "you lose"
 				player.wallet.amount -= amount
 			end
@@ -40,6 +39,7 @@ class HeadsTails
 			 end
 		else 'Please pick (1) or (2) for heads and tails.'
 		end
+
 	end
 
 end
