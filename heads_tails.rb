@@ -1,11 +1,12 @@
 require 'pry'
 
 require_relative 'player'
+require_relative 'head_tails_logo'
 
 class HeadsTails
 
 	def initialize(player)
-		puts 'Welcome to Heads Tails!'
+		head_tails_logo
 		puts "#{player.name}, you have a balance of #{player.wallet.amount}"
 		puts 'How much do you want to bet?'
 		  amount = gets.strip.to_i
