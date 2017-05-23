@@ -33,24 +33,24 @@ class Casino
       print_slots
    		puts 'Enter the number of the game you want to play:'
    		puts '1) Single Card No-See-Em Poker -- WORKING!!'
-   		puts '2) Heads or Tails--not yet working'
-   		puts '3) Roulette--not yet working'
-   		puts '4) Craps--not yet working'
-   		puts '5) Black Jack--not yet working'
-   		puts '6) Quit'
+   		puts '2) Heads or Tails -- WORKING!!'
+#   		puts '3) Roulette--not yet working'
+#   		puts '4) Craps--not yet working'
+   		puts '3) Black Jack--not yet working'
+   		puts '4) Quit'
    		game = gets.to_i
    		case game
    		when 1
    			 SingleCardPoker.new(@player)
    		when 2
    		   HeadsTails.new(@player)
-   		when 3
+#   		when 3
    			#Roulette.new(@player)
-   		when 4
+#   		when 4
    			#Craps.new(@player)
-   		when 5
+   		when 3
    			BlackJackHand.new
-   		when 6
+   		when 4
    			exit
    		else
    			puts "INVALID NUMBER. Try again.\n\n"
