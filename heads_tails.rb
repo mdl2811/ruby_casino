@@ -6,35 +6,36 @@ class HeadsTails
 
 	def initialize(player)
 		puts 'Welcome to Heads Tails!'
-		# puts "#{player.name}, you have a balance of #{player.wallet.amount}"
-		puts 'how much do you want to bet?'
+		puts "#{player.name}, you have a balance of #{player.wallet.amount}"
+		puts 'How much do you want to bet?'
 		  amount = gets.strip.to_i
 
     check_result(player, amount)
 	end
 
 	def check_result(player, amount)
-		heads_tails = rand(1) == 0 ? 'heads' : 'tails'
+		heads_tails = rand(2) == 0 ? 'Heads' : 'Tails'
 		puts 'Pick (1) for heads and (2) for tails.'
 		user_input = gets.strip.to_i
 		case user_input
 		when 1
-			if heads_tails == 'heads'
-				puts "you win"
+      puts 'Heads'
+			if heads_tails == 'Heads'
+        puts "You win!"
 				player.wallet.amount += amount * 2
 			else
-				heads_tails != 'heads'
-				puts "you lose"
+				puts 'Tails!'
+				puts "You lose!"
 				player.wallet.amount -= amount
 			end
 		when 2
-			puts 'tails'
-			 if heads_tails == 'tails'
-				 puts "you win"
+			puts 'Tails'
+			 if heads_tails == 'Tails'
+				 puts "You win!"
 				 player.wallet.amount += amount * 2
 		   else
-				 heads_tails != 'heads'
-				 puts "you lose"
+				 puts 'Heads!'
+				 puts "You lose!"
 				 player.wallet.amount -= amount
 			 end
 		else 'Please pick (1) or (2) for heads and tails.'
