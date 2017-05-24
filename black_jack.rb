@@ -2,11 +2,12 @@ require 'pry'
 
 require_relative "Card"
 require_relative "Deck"
+require_relative "player"
 
 class BlackJackHand
   attr_accessor :hand, :hand_value
 
-  def initialize
+  def initialize(player)
       @hand = []
       @dealer_hand = []
       @hand_value = 0
@@ -14,9 +15,14 @@ class BlackJackHand
       @d = []
       @d = Deck.new
       @d.shuffle!
+      @players = player
+      @players.wallet.amount
+    	puts "#{player.name}, you have a balance of #{player.wallet.amount}"
+    	puts 'How much do you want to bet?'
+  	  amount = gets.strip.to_i
       puts "A new deck has been shuffled and there are #{@d.remaining} cards"
       deal
-  end
+      end
 
   def deal
     2.times do
@@ -72,6 +78,7 @@ class BlackJackHand
       while @dealer_value < 17
         dealer_hit
         puts @dealer_hand
+        puts @dealer_value
       end
 
       if @hand_value <= 21
@@ -79,6 +86,8 @@ class BlackJackHand
           puts "Player wins"
         elsif @hand_value == @dealer_value
           puts "Dealer and Player tied"
+        elsif @dealer_value > 21
+          puts "Dealer busts, Player Wins!"
         else
           puts "Dealer wins"
         end
@@ -110,4 +119,18 @@ end
   def to_s
     puts "#{@hand.to_s}, total value #{@hand_value}"
   end
+end
+
+def continue_quit(player)
+  puts "Would you like to continue?
+  1) yes
+  2) no"
+  continue = gets.strip.to_i
+case continue
+when 1
+  puts 'Continue'
+  
+when 2
+  puts 'Bye, come play again.'
+end
 end

@@ -20,7 +20,7 @@ class Casino
 
     @player = Player.new
 
-    Sounder::System.set_volume 100 # 0-100
+    Sounder::System.set_volume 50 # 0-100
 
     # need a casino menu using a method
     casino_menu
@@ -55,7 +55,7 @@ class Casino
 #   		when 4
    			#Craps.new(@player)
    		when 3
-   			BlackJackHand.new
+   			BlackJackHand.new(@player)
    		when 4
    			exit
    		else
