@@ -54,6 +54,7 @@ class BlackJackHand
       puts "Player wins with BlackJack!"
       puts "Dealer's hand:"
       puts @dealer_hand
+      player.wallet.add_money(bet * bank)
     else
       until @hand_value > 21
         puts "Do you want to hit(h) or stay(s)?"
@@ -84,15 +85,19 @@ class BlackJackHand
       if @hand_value <= 21
         if @hand_value > @dealer_value
           puts "Player wins"
+          player.wallet.add_money(bet * bank)
         elsif @hand_value == @dealer_value
           puts "Dealer and Player tied"
         elsif @dealer_value > 21
           puts "Dealer busts, Player Wins!"
+          player.wallet.add_money(bet * bank)
         else
           puts "Dealer wins"
+          player.wallet.remove_money(bet * bank.abs)
         end
       else
         puts "Player busts. Dealer wins"
+        player.wallet.remove_money(bet * bank.abs)
       end
     end
     puts "There are #{@d.remaining} cards in the deck"
@@ -129,7 +134,7 @@ def continue_quit(player)
 case continue
 when 1
   puts 'Continue'
-  
+
 when 2
   puts 'Bye, come play again.'
 end
