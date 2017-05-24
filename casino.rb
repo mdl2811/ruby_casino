@@ -16,7 +16,7 @@ require_relative "print_slots"
 class Casino
   def initialize
     print_welcome
-    puts "\nWelcome to our Ruby Casino!!!!"
+    puts "\nWelcome to our Ruby Casino!!!!".colorize(:red)
 
     @player = Player.new
 

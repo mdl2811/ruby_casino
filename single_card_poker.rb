@@ -76,19 +76,19 @@ class SingleCardPoker
       		end
       	end
 
-         puts "Your card beats #{num_wins} of the other other players' cards."
-         puts "Your card loses to #{num_losses} of the other other players' cards."
+         puts "Your card beats #{num_wins} of the other other players' cards.".colorize(:green)
+         puts "Your card loses to #{num_losses} of the other other players' cards.".colorize(:red)
 
          bank = num_wins - num_losses
          # change wallet by amount won or lost
       	if bank < 0
-      		puts "You lose a total of $#{bet * bank.abs}"
+      		puts "You lose a total of $#{bet * bank.abs}".colorize(:red)
       		player.wallet.remove_money(bet * bank.abs)
       	elsif bank > 0
-      		puts "You win a total of $#{bet * bank}"
+      		puts "You win a total of $#{bet * bank}".colorize(:green)
       		player.wallet.add_money(bet * bank)
       	else
-      		puts "You didn't win money, but you didn't lose money either!"
+      		puts "You didn't win money, but you didn't lose money either!".colorize(:blue)
       	end
 
      puts "\n\n\nDo you want to play again? Y or N"
