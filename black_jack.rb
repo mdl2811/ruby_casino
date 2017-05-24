@@ -15,11 +15,12 @@ class BlackJackHand
       @d = []
       @d = Deck.new
       @d.shuffle!
-      @players = player
-      @players.wallet.amount
+      @player = player
+      @player.wallet.amount
+      @amount = 0
     	puts "#{player.name}, you have a balance of #{player.wallet.amount}"
     	puts 'How much do you want to bet?'
-  	  amount = gets.strip.to_i
+  	  @amount = gets.strip.to_i
       puts "A new deck has been shuffled and there are #{@d.remaining} cards"
       deal
       end
@@ -54,7 +55,8 @@ class BlackJackHand
       puts "Player wins with BlackJack!"
       puts "Dealer's hand:"
       puts @dealer_hand
-      player.wallet.add_money(bet * bank)
+      @player.wallet.amount += @amount
+      puts @player.wallet.amount
     else
       until @hand_value > 21
         puts "Do you want to hit(h) or stay(s)?"
@@ -85,22 +87,26 @@ class BlackJackHand
       if @hand_value <= 21
         if @hand_value > @dealer_value
           puts "Player wins"
-          player.wallet.add_money(bet * bank)
+          @player.wallet.amount += amount
         elsif @hand_value == @dealer_value
           puts "Dealer and Player tied"
         elsif @dealer_value > 21
           puts "Dealer busts, Player Wins!"
-          player.wallet.add_money(bet * bank)
+          @player.wallet.amount += @amount
+          puts @player.wallet.amount
         else
           puts "Dealer wins"
-          player.wallet.remove_money(bet * bank.abs)
+          @player.wallet.amount -= @amount
+          puts @player.wallet.amount
         end
       else
         puts "Player busts. Dealer wins"
-        player.wallet.remove_money(bet * bank.abs)
+        @player.wallet.amount -= @amount
+        puts @player.wallet.amount
       end
     end
     puts "There are #{@d.remaining} cards in the deck"
+    continue_quit
   end
 
   def player_hit
@@ -126,7 +132,7 @@ end
   end
 end
 
-def continue_quit(player)
+def continue_quit
   puts "Would you like to continue?
   1) yes
   2) no"
@@ -134,7 +140,7 @@ def continue_quit(player)
 case continue
 when 1
   puts 'Continue'
-
+  playing
 when 2
   puts 'Bye, come play again.'
 end
