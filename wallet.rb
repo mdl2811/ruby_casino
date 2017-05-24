@@ -20,7 +20,7 @@ class Wallet
 
 	def add_money(amt)
 		@amount = @amount + amt
-        sound = Sounder::Sound.new "./262812__win88emily__card-shuffle-win88.mp3"
+        sound = Sounder::Sound.new "./73701__milton__slot-6.mp3"
         sound.play
 
 	end
@@ -28,6 +28,8 @@ class Wallet
 	def remove_money(amt)
 		@amount = @amount - amt
 
+        sound = Sounder::Sound.new "./131409__ecfike__oh-no-4.wav"
+        sound.play
 		while (@amount == nil) || (@amount <= 0) do
 			puts "You have #{@amount} in your wallet."
 			puts "How much money do you want to add to your wallet?"

@@ -53,7 +53,6 @@ def print_welcome
 
  
     for i in 0..5
-        print lines[i]
-        print "\n"
+        puts lines[i]
     end
 end

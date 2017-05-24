@@ -19,6 +19,10 @@ class Player
 		@name = get_string('name', @name)
 	
 		@age = get_num('age', @age)
+		if @age < 21
+			puts "You are TOO YOUNG to gamble! Good-bye!"
+			exit
+		end
 
 		until @gender do
 			puts "Enter the letter for your gender:"

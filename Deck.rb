@@ -14,7 +14,7 @@ class Deck
     puts "Wait just a sec while the deck is shuffled!"
     sound = Sounder::Sound.new "./262812__win88emily__card-shuffle-win88.mp3"
     sound.play
-    sleep(4)
+    sleep(5)
     @cards.shuffle!
   end
   def draw

@@ -1,6 +1,7 @@
 require_relative 'Deck'
 require_relative 'Card'
 require_relative 'card_display'
+require_relative 'poker_logo'
 
 class SingleCardPoker
  # Getter and Setter methods
@@ -9,6 +10,8 @@ class SingleCardPoker
  # Gets called when you call the new method to create an instance
  # deck = Deck.new
  def initialize(player)
+
+   print_poker_logo
 
  	players = []
  		
@@ -42,7 +45,8 @@ class SingleCardPoker
       	end
 
       	# get bet
-     	bet = get_num('bet', 0)
+         puts "\n"
+     	   bet = get_num('bet', 0)
 
    	# number of cards the player beats
       	num_wins = 0 
